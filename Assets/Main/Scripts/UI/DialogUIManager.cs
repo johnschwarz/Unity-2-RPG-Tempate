@@ -17,6 +17,7 @@ public class DialogUIManager : MonoBehaviour
     [SerializeField]
     private int responses = 0;
 
+    private DialogueBranch branch;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,12 +51,15 @@ public class DialogUIManager : MonoBehaviour
     public void NextBranch(int branchSelect)
     {
         // Add ReciveDialogueBranch with newBranch being next branch
+
     }
 
     
-    public void RecieveDialogueBranch()
+    public void RecieveDialogueBranch(DialogueBranch newBranch)
     {
-        // Add branch info here
+        this.branch = newBranch;
+        responses = Mathf.Clamp(branch.ResponseOption.Count, 0, 3);
+        currentIndex = 0;
     }
 
     public void NextDialogue()
