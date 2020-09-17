@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adca541705f2411693a9dcb4c8d4eac, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  dialogueID: 1
+  DialogueLines:
+  - Hi I'm a mage
+  - you should be scared of my power!
+  - Are you Sccared?
+  ResponseOption:
+  - text: I'm not scared.
+    nextBranch: {fileID: 11400000, guid: fa18f1199a8ac46dbab1ecd9410a2775, type: 2}
+  - text: I am scared.
+    nextBranch: {fileID: 11400000, guid: 749ae9429d09a486eaa1f7701f07c49e, type: 2}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class DialogUIManager : MonoBehaviour
 {
@@ -52,7 +53,11 @@ public class DialogUIManager : MonoBehaviour
     {
         // Add ReciveDialogueBranch with newBranch being next branch
 
+        RecieveDialogueBranch(branch.ResponseOption[branchSelect].nextBranch);
+        ActiveDialogue();
+        NextDialogue();
     }
+
 
     
     public void RecieveDialogueBranch(DialogueBranch newBranch)
@@ -64,8 +69,34 @@ public class DialogUIManager : MonoBehaviour
 
     public void NextDialogue()
     {
-        DeactiveDialogue(); // Remove this and
-       // add next Dialogue mechanism here
-
+        //check to see if we're at the end of the branch
+        if (currentIndex >= branch.DialogueLines.Count)
+        {
+            if (responses == 0)
+            {
+                DeactiveDialogue();
+            }
+            else
+            {
+                continueText.SetActive(false);
+                for (int i = 0; i < responses; i++)
+                {
+                    if (i >= 3)
+                    {
+                        break;
+                    }
+                    responsesHolder[i].gameObject.SetActive(true);
+                    responsesHolder[i].GetComponentInChildren<TextMeshProUGUI>().text =
+                        branch.ResponseOption[i].text;
+                }
+            }
+        }
+        else
+        {
+            mainText.GetComponent<TextMeshProUGUI>().text =
+                branch.DialogueLines[currentIndex];
+            continueText.SetActive(true);
+            currentIndex++;
+        }
     }
 }

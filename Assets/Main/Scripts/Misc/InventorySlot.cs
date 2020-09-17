@@ -29,6 +29,7 @@ public class InventorySlot : MonoBehaviour
             indexItem = -1;
             amount = -1;
         }
+        
     }
 
     public void UpdateSelf(PlayerManager player)
