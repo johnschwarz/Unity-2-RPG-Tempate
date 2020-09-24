@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InventoryUI : MonoBehaviour
 {
     public GameObject itemButton;
     public GameObject inventoryContent;
     public PlayerManager pm;
+
 
     void Start()
     {
