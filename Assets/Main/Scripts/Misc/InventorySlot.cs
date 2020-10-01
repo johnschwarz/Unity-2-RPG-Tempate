@@ -32,9 +32,10 @@ public class InventorySlot : MonoBehaviour
 
         if (infoText == null)
         {
-            infoText = GameObject.FindWithTag("Info").GetComponent<TextMeshProUGUI>();
+            GameObject infoTGO = new List<GameObject>(GameObject.FindGameObjectsWithTag("Info"))
+                .Find(g => g.transform.IsChildOf(this.transform));
+            infoText = infoTGO.GetComponent<TextMeshProUGUI>();
         }
-        
     }
 
     public void UpdateSelf(PlayerManager player)
@@ -47,6 +48,7 @@ public class InventorySlot : MonoBehaviour
             FillValues(player);
         }
         GetComponentInChildren<TextMeshProUGUI>().text = amount.ToString();
+        UpdateInfo();
     }
 
     void FillValues(PlayerManager player)
